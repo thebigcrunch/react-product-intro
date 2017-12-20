@@ -1,5 +1,5 @@
 {
-  "name": "react-user-tour",
+  "name": "react-product-intro",
   "version": "3.0.2",
   "description": "give your user a guided tour around your application",
   "main": "dist/index.js",
@@ -30,12 +30,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/socialtables/react-user-tour.git"
+    "url": "https://github.com/rudza/react-user-tour.git"
   },
   "bugs": {
-    "url": "https://github.com/socialtables/react-user-tour/issues"
+    "url": "https://github.com/rudza/react-user-tour/issues"
   },
-  "homepage": "https://github.com/socialtables/react-user-tour",
+  "homepage": "",
   "keywords": [
     "onboarding",
     "user",

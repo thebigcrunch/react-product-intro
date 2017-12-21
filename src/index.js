@@ -218,8 +218,22 @@ export default class ReactUserTour extends Component {
 				</span> : ""
 		);
 
+		const tourContainerStyle = {
+			position: "absolute",
+			width: "100%",
+			height: "100%",
+			zIndex: 100,
+			...this.props.containerStyle
+		}
+		if (!tourContainerStyle.backgroundColor) {
+			tourContainerStyle.backgroundColor = "#222326"
+		}
+		if (!tourContainerStyle.opacity) {
+			tourContainerStyle.opacity = 0.5
+		}
+
 		return (
-			<div className="react-user-tour-container" style={this.props.containerStyle}>
+			<div className="react-user-tour-container" style={tourContainerStyle}>
 				<Motion style={{x: spring(position.left), y: spring(position.top)}}>
 					{({x, y}) =>
 

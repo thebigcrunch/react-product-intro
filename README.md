@@ -4,10 +4,8 @@ This is an upgraded version of https://github.com/socialtables/react-user-tour
 
 A component that allows you to give a user a guided tour around your application. <a href="http://socialtables.github.io/react-user-tour/demo/index.html">Click here for a Demo!</a>
 
-[![Circle CI](https://circleci.com/gh/socialtables/react-user-tour.svg?style=svg&circle-token=914785eeca4d096e0303a857f52f20a646013124)](https://circleci.com/gh/socialtables/react-user-tour)
-
 ### Install
-` npm install react-user-tour`
+` npm install react-product-intro`
 
 ###  Props
 
@@ -72,7 +70,7 @@ Boolean to disable the showing of the close text in the upper left of the compon
 
 ```js
 import React, { Component }from "react";
-import Tour from "react-user-tour";
+import Tour from "react-product-intro";
 export default class UserTour extends Component {
 	constructor() {
 		super();

@@ -1,7 +1,7 @@
 {
   "name": "react-product-intro",
-  "version": "3.0.2",
-  "description": "give your user a guided tour around your application",
+  "version": "1.0.0",
+  "description": "web application product intro tour guide for the first time visitors",
   "main": "dist/index.js",
   "browserify": {
     "transform": [
@@ -46,7 +46,10 @@
     "joyride",
     "hopscotch",
     "shepard",
-    "react"
+    "react",
+    "product",
+    "intro",
+    "application"
   ],
   "author": "Social Tables",
   "license": "Apache-2.0",

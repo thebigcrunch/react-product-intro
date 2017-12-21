@@ -234,7 +234,7 @@ export default class ReactUserTour extends Component {
 				<Motion style={{x: spring(position.left), y: spring(position.top)}}>
 					{({x, y}) =>
 
-						<div style={{...style, transform: `translate3d(${x}px, ${y}px, 0)`, opacity: 1}}>
+						<div style={{...style, transform: `translate3d(${x}px, ${y}px, 0)`}}>
 							{arrow}
 							{closeButton}
 							{currentTourStep.title}

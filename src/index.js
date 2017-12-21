@@ -251,7 +251,7 @@ export default class ReactUserTour extends Component {
 
 		const maskPosition = this.getMaskPositionAndDimensions({ selector: currentTourStep.selector })
 		console.log('maskPosition', maskPosition)
-		const maskStyle = {
+		const maskStyle = maskPosition ? {
 		    position: "absolute",
 		    // left: maskPosition.left,
 		    // top: maskPosition.top,
@@ -260,7 +260,7 @@ export default class ReactUserTour extends Component {
 		    height: maskPosition.height,
 		    boxShadow: "0px 0px 0px 2000px #222326",
 		    opacity: 0.5,
-		}
+		} : {};
 
 		return (
 			<div className="react-user-tour-container" style={tourContainerStyle}>

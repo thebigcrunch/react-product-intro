@@ -28,6 +28,17 @@ class Demo extends Component {
 			fontSize: 12,
 			paddingLeft: 10
 		};
+
+		const wrapperStyle = {
+			position: "absolute",
+			top: 0,
+		}
+
+		if (this.state.isTourActive) {
+			wrapperStyle.width = "100%"
+			wrapperStyle.height = "100%"
+		}
+
 		return (
 			<div>
 				<div
@@ -125,7 +136,7 @@ class Demo extends Component {
 				<p className="stop-6" style={{color: "white"}}>
 					so far away.
 				</p>
-				<div style={{position: "absolute", top: 0}}>
+				<div style={wrapperStyle}>
 					<Tour
 						active={this.state.isTourActive}
 						step={this.state.tourStep}

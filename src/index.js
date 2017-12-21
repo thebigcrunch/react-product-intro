@@ -226,10 +226,7 @@ export default class ReactUserTour extends Component {
 			...this.props.containerStyle
 		}
 		if (!tourContainerStyle.backgroundColor) {
-			tourContainerStyle.backgroundColor = "#222326"
-		}
-		if (!tourContainerStyle.opacity) {
-			tourContainerStyle.opacity = 0.5
+			tourContainerStyle.backgroundColor = "rgba(34, 35, 38, 0.5)"
 		}
 
 		return (
@@ -237,7 +234,7 @@ export default class ReactUserTour extends Component {
 				<Motion style={{x: spring(position.left), y: spring(position.top)}}>
 					{({x, y}) =>
 
-						<div style={{...style, transform: `translate3d(${x}px, ${y}px, 0)`}}>
+						<div style={{...style, transform: `translate3d(${x}px, ${y}px, 0)`, opacity: 1}}>
 							{arrow}
 							{closeButton}
 							{currentTourStep.title}

@@ -25,6 +25,14 @@ export default class ReactUserTour extends Component {
 			this.props.hideClose !== nextProps.hideClose;
 	}
 
+	getMaskPositionAndDimensions({ selector }) {
+		const el = document.querySelector(selector);
+		if (el) {
+			const position = el ? el.getBoundingClientRect() : {};
+			return position
+		}
+	}
+
 	getStepPosition(
 		selector,
 		tourElWidth,
@@ -39,6 +47,7 @@ export default class ReactUserTour extends Component {
 		const el = document.querySelector(selector);
 		if (el) {
 			let position = el ? el.getBoundingClientRect() : {};
+
 			const isElementBelowViewBox = viewBoxHelpers.isElementBelowViewBox(windowHeight, position.top);
 			const isElementAboveViewBox = viewBoxHelpers.isElementBelowViewBox(position.bottom);
 			if (isElementBelowViewBox) {
@@ -134,6 +143,7 @@ export default class ReactUserTour extends Component {
 
 	render() {
 		const currentTourStep = this.props.steps.filter(step => step.step === this.props.step)[0];
+		console.log('currentTourStep', currentTourStep)
 		if (!this.props.active || !currentTourStep) {
 			return <span />;
 		}
@@ -229,6 +239,18 @@ export default class ReactUserTour extends Component {
 			tourContainerStyle.backgroundColor = "rgba(34, 35, 38, 0.5)"
 		}
 
+		const maskPosition = this.getMaskPositionAndDimensions({ selector: currentTourStep.selector })
+		console.log('maskPosition', maskPosition)
+		const maskStyle = {
+		    position: "absolute",
+		    left: maskPosition.left,
+		    top: maskPosition.top,
+		    width: maskPosition.width,
+		    height: maskPosition.height,
+		    boxShadow: "0px 0px 0px 2000px #222326",
+		    opacity: 0.5,
+		}
+
 		return (
 			<div className="react-user-tour-container" style={tourContainerStyle}>
 				<Motion style={{x: spring(position.left), y: spring(position.top)}}>
@@ -243,6 +265,8 @@ export default class ReactUserTour extends Component {
 						</div>
 					}
 				</Motion>
+				{/* mask for content highlighting */}
+				<div style={maskStyle} />
 			</div>
 		);
 	}

@@ -1,12 +1,20 @@
+# Top-most EditorConfig file
 root = true
 
+# Unix style newlines with a newline ending every file
 [*]
-indent_style = tab
+charset = utf-8
 end_of_line = lf
-trim_trailing_whitespace = true
-insert_final_newline = true
-
-# Matches the exact files: package.json
-[{package.json}]
 indent_style = space
 indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Set default charset
+[*.{js,css,scss,html,json}]
+indent_style = space
+indent_size = 2
+
+# Markdown file config
+[*.md]
+trim_trailing_whitespace = false

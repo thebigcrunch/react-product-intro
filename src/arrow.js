@@ -7,13 +7,19 @@ const Arrow = ({position, width, height, size, color}) => {
 		case "left":
 			arrowStyle = arrowRight({size, color});
 			arrowStyle.left = width;
+      arrowStyle.top = "50%";
+      arrowStyle.transform = "translateY(-50%)";
 			break;
 		case "right":
 			arrowStyle = arrowLeft({size, color});
+      arrowStyle.top = "50%";
+      arrowStyle.transform = "translateY(-50%)";
 			break;
 		case "top":
 			arrowStyle = arrowDown({size, color});
 			arrowStyle.top = height;
+      arrowStyle.left = "50%";
+      arrowStyle.transform = "translateX(-50%)";
 			break;
 		case "topLeft":
 			arrowStyle = arrowDown({size, color});
@@ -22,6 +28,8 @@ const Arrow = ({position, width, height, size, color}) => {
 			break;
 		case "bottom":
 			arrowStyle = arrowUp({size, color});
+      arrowStyle.left = "50%";
+      arrowStyle.transform = "translateX(-50%)";
 			break;
 		case "bottomLeft":
 			arrowStyle = arrowUp({size, color});

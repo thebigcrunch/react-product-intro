@@ -33,7 +33,7 @@ export default class ReactUserTour extends Component {
 		}
 	}
 
-	getStepPosition(
+	getStepPosition({
 		selector,
 		tourElWidth,
 		tourElHeight,
@@ -41,78 +41,84 @@ export default class ReactUserTour extends Component {
 		margin = 25,
 		horizontalOffset = 0,
 		verticalOffset = 0
-	) {
+	}) {
 		const windowHeight = window.innerHeight;
 		const windowWidth = window.innerWidth;
 		const el = document.querySelector(selector);
 		if (el) {
-			let position = el ? el.getBoundingClientRect() : {};
+			let elPosition = el ? el.getBoundingClientRect() : {};
 
-			const isElementBelowViewBox = viewBoxHelpers.isElementBelowViewBox(windowHeight, position.top);
-			const isElementAboveViewBox = viewBoxHelpers.isElementBelowViewBox(position.bottom);
+			const isElementBelowViewBox = viewBoxHelpers.isElementBelowViewBox(windowHeight, elPosition.top);
+			const isElementAboveViewBox = viewBoxHelpers.isElementBelowViewBox(elPosition.bottom);
 			if (isElementBelowViewBox) {
-				position = scrollToPosition(el, position.bottom);
+				elPosition = scrollToPosition(el, elPosition.bottom);
 			}
 			else if (isElementAboveViewBox) {
-				position = scrollToPosition(el, window.pageYOffset + position.top);
+				elPosition = scrollToPosition(el, window.pageYOffset + elPosition.top);
 			}
-			const shouldPositionLeft = viewBoxHelpers.shouldPositionLeft(windowWidth, position.left);
-			const shouldPositionAbove = viewBoxHelpers.shouldPositionAbove(windowHeight, position.bottom);
-			const shouldPositionBelow = viewBoxHelpers.shouldPositionBelow(position.top);
+
 			let elPos;
+      console.log('elPosition', elPosition)
+
 			if (overridePos && positions[overridePos]) {
 				elPos = positions[overridePos]({
-					position,
+					position: elPosition,
 					tourElWidth,
 					tourElHeight,
-					arrowSize: this.props.arrowSize,
-					offsetHeight: el.offsetHeight,
-					margin
-				});
-			}
-			else if (shouldPositionLeft && !shouldPositionAbove && !shouldPositionBelow) {
-				elPos = positions.left({
-					position,
-					tourElWidth,
-					margin
-				});
-			}
-			else if (shouldPositionAbove) {
-				elPos = shouldPositionLeft ? positions.topLeft({
-					position,
-					tourElWidth,
-					tourElHeight,
-					arrowSize: this.props.arrowSize,
-					margin
-				}) :
-				positions.top({
-					position,
-					tourElHeight,
-					arrowSize: this.props.arrowSize,
-					margin
-				});
-			}
-			else if (shouldPositionBelow) {
-				elPos = shouldPositionLeft ? positions.bottomLeft({
-					position,
-					tourElWidth,
-					arrowSize: this.props.arrowSize,
-					offsetHeight: el.offsetHeight,
-					margin
-				}) :
-				positions.bottom({
-					position,
 					arrowSize: this.props.arrowSize,
 					offsetHeight: el.offsetHeight,
 					margin
 				});
 			}
 			else {
-				elPos = positions.right({
-					position,
-					margin
-				});
-			}
+        const shouldPositionLeft = viewBoxHelpers.shouldPositionLeft(windowWidth, elPosition.left);
+        const shouldPositionAbove = viewBoxHelpers.shouldPositionAbove(windowHeight, elPosition.bottom);
+        const shouldPositionBelow = viewBoxHelpers.shouldPositionBelow(elPosition.top);
+
+        if (shouldPositionLeft && !shouldPositionAbove && !shouldPositionBelow) {
+  				elPos = positions.left({
+  					position: elPosition,
+  					tourElWidth,
+  					margin
+  				});
+  			}
+  			else if (shouldPositionAbove) {
+  				elPos = shouldPositionLeft ? positions.topLeft({
+  					position: elPosition,
+  					tourElWidth,
+  					tourElHeight,
+  					arrowSize: this.props.arrowSize,
+  					margin
+  				}) :
+  				positions.top({
+  					position: elPosition,
+  					tourElHeight,
+  					arrowSize: this.props.arrowSize,
+  					margin
+  				});
+  			}
+  			else if (shouldPositionBelow) {
+  				elPos = shouldPositionLeft ? positions.bottomLeft({
+  					position: elPosition,
+  					tourElWidth,
+  					arrowSize: this.props.arrowSize,
+  					offsetHeight: el.offsetHeight,
+  					margin
+  				}) :
+  				positions.bottom({
+  					position: elPosition,
+  					arrowSize: this.props.arrowSize,
+  					offsetHeight: el.offsetHeight,
+  					margin
+  				});
+  			}
+  			else {
+  				elPos = positions.right({
+  					position: elPosition,
+  					margin
+  				});
+  			}
+      }
 
 			elPos.left += horizontalOffset;
 			elPos.top += verticalOffset;
@@ -142,28 +148,31 @@ export default class ReactUserTour extends Component {
 	}
 
 	render() {
+    console.log('this.props.steps', this.props.steps)
 		const currentTourStep = this.props.steps.filter(step => step.step === this.props.step)[0];
 		console.log('currentTourStep', currentTourStep)
 		if (!this.props.active || !currentTourStep) {
-			return <span />;
+			return null;
 		}
-		const position = this.getStepPosition(
-			currentTourStep.selector,
-			this.props.style.width,
-			this.props.style.height,
-			currentTourStep.position,
-			currentTourStep.margin,
-			currentTourStep.horizontalOffset,
-			currentTourStep.verticalOffset
-		);
-		const style = {...this.props.style};
+		const stepPosition = this.getStepPosition({
+      selector: currentTourStep.selector,
+      tourElWidth: this.props.style.width,
+      tourElHeight: this.props.style.height,
+      overridePos: currentTourStep.position,
+      margin: currentTourStep.margin,
+      horizontalOffset: currentTourStep.horizontalOffset,
+      verticalOffset: currentTourStep.verticalOffset
+		});
+
+    console.log('stepPosition', stepPosition)
+
 		const arrow = (
 			this.props.arrow
 			?
-			this.getCustomArrow(position)
+			this.getCustomArrow(stepPosition)
 			:
 			<Arrow
-				position={position.positioned}
+				position={stepPosition.positioned}
 				width={this.props.style.width}
 				height={this.props.style.height}
 				size={this.props.arrowSize}
@@ -230,21 +239,23 @@ export default class ReactUserTour extends Component {
 
 		const tourContainerStyle = {
 			position: "absolute",
-			width: "100%",
-			height: "100%",
+      top: 0,
+      right: 0,
+      bottom: 0,
+			left: 0,
 			zIndex: 100,
 			...this.props.containerStyle
 		}
-		if (!tourContainerStyle.backgroundColor) {
-			tourContainerStyle.backgroundColor = "rgba(34, 35, 38, 0.5)"
-		}
+
+    const tooltipStyle = {...this.props.style};
 
 		const maskPosition = this.getMaskPositionAndDimensions({ selector: currentTourStep.selector })
 		console.log('maskPosition', maskPosition)
 		const maskStyle = {
 		    position: "absolute",
-		    left: maskPosition.left,
-		    top: maskPosition.top,
+		    // left: maskPosition.left,
+		    // top: maskPosition.top,
+        transform: `translate3d(${maskPosition.left}px, ${maskPosition.top}px, 0px)`,
 		    width: maskPosition.width,
 		    height: maskPosition.height,
 		    boxShadow: "0px 0px 0px 2000px #222326",
@@ -253,10 +264,10 @@ export default class ReactUserTour extends Component {
 
 		return (
 			<div className="react-user-tour-container" style={tourContainerStyle}>
-				<Motion style={{x: spring(position.left), y: spring(position.top)}}>
+				<Motion style={{x: spring(stepPosition.left), y: spring(stepPosition.top)}}>
 					{({x, y}) =>
 
-						<div style={{...style, transform: `translate3d(${x}px, ${y}px, 0)`}}>
+						<div style={{...tooltipStyle, transform: `translate3d(${x}px, ${y}px, 0)`}}>
 							{arrow}
 							{closeButton}
 							{currentTourStep.title}

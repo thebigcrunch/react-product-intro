@@ -32,11 +32,9 @@ class Demo extends Component {
 		const wrapperStyle = {
 			position: "absolute",
 			top: 0,
-		}
-
-		if (this.state.isTourActive) {
-			wrapperStyle.width = "100%"
-			wrapperStyle.height = "100%"
+      right: 0,
+      bottom: 0,
+      left: 0,
 		}
 
 		return (
@@ -155,31 +153,36 @@ class Demo extends Component {
 								step: 2,
 								selector: ".stop-2",
 								title: <div style={tourTitleStyle}>Simply</div>,
-								body: <div style={tourMessageStyle}>pass in a class class prefixe with `.` or id prefixed with `#`</div>
+								body: <div style={tourMessageStyle}>pass in a class class prefixe with `.` or id prefixed with `#`</div>,
+                position: "right"
 							},
 							{
 								step: 3,
 								selector: ".stop-3",
 								title: <div style={tourTitleStyle}>And</div>,
-								body: <div style={tourMessageStyle}>React User Tour will figure out where to position the element.</div>
+								body: <div style={tourMessageStyle}>React User Tour will figure out where to position the element.</div>,
+                position: "top"
 							},
 							{
 								step: 4,
 								selector: ".stop-4",
 								title: <div style={tourTitleStyle}>Wow</div>,
-								body: <div style={tourMessageStyle}>That sounds amazing, can it be true?</div>
+								body: <div style={tourMessageStyle}>That sounds amazing, can it be true?</div>,
+                position: "left"
 							},
 							{
 								step: 5,
 								selector: ".stop-5",
 								title: <div style={tourTitleStyle}>Yes</div>,
-								body: <div style={tourMessageStyle}>and guess what?</div>
+								body: <div style={tourMessageStyle}>and guess what?</div>,
+                position: "bottomLeft"
 							},
 							{
 								step: 6,
 								selector: ".stop-6",
 								title: <div style={tourTitleStyle}>What?</div>,
-								body: <div style={tourMessageStyle}>we'll even take care of scrolling to elements outside of the viewbox. Enjoy!</div>
+								body: <div style={tourMessageStyle}>we'll even take care of scrolling to elements outside of the viewbox. Enjoy!</div>,
+                position: "topLeft"
 							}
 						]}
 					/>

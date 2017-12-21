@@ -1,40 +1,40 @@
 const positions = {
-	right: ({position, margin}) => {
+	right: ({ position, tourElHeight, margin }) => {
 		return {
 			left: Math.floor(position.right + margin),
-			top: Math.floor(position.top + window.pageYOffset),
+			top: Math.floor(position.top + window.pageYOffset - ((tourElHeight - position.height) / 2)),
 			positioned: "right"
 		};
 	},
-	left: ({position, tourElWidth, margin}) => {
+	left: ({ position, tourElWidth, tourElHeight, margin }) => {
 		return {
 			left: Math.floor((position.left - margin) - tourElWidth),
-			top: Math.floor(position.top + window.pageYOffset),
+			top: Math.floor(position.top + window.pageYOffset - ((tourElHeight - position.height) / 2)),
 			positioned: "left"
 		};
 	},
-	top: ({position, tourElHeight, arrowSize, margin}) => {
+	top: ({ position, tourElWidth, tourElHeight, arrowSize, margin }) => {
 		return {
-			left: Math.floor(position.left),
+			left: Math.floor(position.left - ( (tourElWidth - position.width) / 2 )),
 			top: Math.floor((position.top + window.pageYOffset) - tourElHeight - arrowSize),
 			positioned: "top"
 		};
 	},
-	topLeft: ({position, tourElWidth, tourElHeight, arrowSize, margin}) => {
+	topLeft: ({ position, tourElWidth, tourElHeight, arrowSize, margin }) => {
 		return {
 			left: Math.floor((position.left + margin) - tourElWidth),
 			top: Math.floor((position.top + window.pageYOffset) - tourElHeight - arrowSize),
 			positioned: "topLeft"
 		};
 	},
-	bottom: ({position, arrowSize, offsetHeight, margin}) => {
+	bottom: ({ position, tourElWidth, arrowSize, offsetHeight, margin }) => {
 		return {
-			left: Math.floor(position.left),
+			left: Math.floor(position.left - ( (tourElWidth - position.width) / 2 )),
 			top: Math.floor((position.top + window.pageYOffset) + offsetHeight + arrowSize),
 			positioned: "bottom"
 		};
 	},
-	bottomLeft: ({position, tourElWidth, arrowSize, offsetHeight, margin}) => {
+	bottomLeft: ({ position, tourElWidth, arrowSize, offsetHeight, margin }) => {
 		return {
 			left: Math.floor((position.left + margin) - tourElWidth),
 			top: Math.floor((position.top + window.pageYOffset) + offsetHeight + arrowSize),

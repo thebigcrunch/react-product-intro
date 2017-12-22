@@ -58,7 +58,7 @@ export default class ReactUserTour extends Component {
 			}
 
 			let elPos;
-      console.log('elPosition', elPosition)
+      console.log('elPosition', elPosition, overridePos)
 
 			if (overridePos && positions[overridePos]) {
 				elPos = positions[overridePos]({
@@ -79,6 +79,7 @@ export default class ReactUserTour extends Component {
   				elPos = positions.left({
   					position: elPosition,
   					tourElWidth,
+            tourElHeight,
   					margin
   				});
   			}
@@ -92,6 +93,7 @@ export default class ReactUserTour extends Component {
   				}) :
   				positions.top({
   					position: elPosition,
+            tourElWidth,
   					tourElHeight,
   					arrowSize: this.props.arrowSize,
   					margin
@@ -107,6 +109,7 @@ export default class ReactUserTour extends Component {
   				}) :
   				positions.bottom({
   					position: elPosition,
+            tourElWidth,
   					arrowSize: this.props.arrowSize,
   					offsetHeight: el.offsetHeight,
   					margin
@@ -115,6 +118,7 @@ export default class ReactUserTour extends Component {
   			else {
   				elPos = positions.right({
   					position: elPosition,
+            tourElHeight,
   					margin
   				});
   			}

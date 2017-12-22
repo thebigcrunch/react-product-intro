@@ -58,7 +58,6 @@ export default class ReactUserTour extends Component {
 			}
 
 			let elPos;
-      console.log('elPosition', elPosition, overridePos)
 
 			if (overridePos && positions[overridePos]) {
 				elPos = positions[overridePos]({
@@ -158,12 +157,15 @@ export default class ReactUserTour extends Component {
 	}
 
 	render() {
-    console.log('this.props.steps', this.props.steps)
 		const currentTourStep = this.props.steps.filter(step => step.step === this.props.step)[0];
-		console.log('currentTourStep', currentTourStep)
 		if (!this.props.active || !currentTourStep) {
 			return null;
 		}
+
+    if (currentTourStep.before) {
+      currentTourStep.before();
+    }
+
 		const stepPosition = this.getStepPosition({
       selector: currentTourStep.selector,
       tourElWidth: this.props.style.width,
@@ -173,8 +175,6 @@ export default class ReactUserTour extends Component {
       horizontalOffset: currentTourStep.horizontalOffset,
       verticalOffset: currentTourStep.verticalOffset
 		});
-
-    console.log('stepPosition', stepPosition)
 
 		const arrow = (
 			this.props.arrow
@@ -260,7 +260,6 @@ export default class ReactUserTour extends Component {
     const tooltipStyle = {...this.props.style};
 
 		const maskPosition = this.getMaskPositionAndDimensions({ selector: currentTourStep.selector })
-		console.log('maskPosition', maskPosition)
 		const maskStyle = maskPosition ? {
 		    position: "absolute",
 		    // left: maskPosition.left,

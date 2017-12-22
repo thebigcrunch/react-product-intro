@@ -73,7 +73,13 @@ export default class ReactUserTour extends Component {
 			else {
         const shouldPositionLeft = viewBoxHelpers.shouldPositionLeft(windowWidth, elPosition.left);
         const shouldPositionAbove = viewBoxHelpers.shouldPositionAbove(windowHeight, elPosition.bottom);
-        const shouldPositionBelow = viewBoxHelpers.shouldPositionBelow(windowWidth, elPosition.top);
+        const shouldPositionBelow =
+          viewBoxHelpers.shouldPositionBelow({
+            viewBoxWidth: windowWidth,
+            top: elPosition.top,
+            right: elPosition.right,
+            tooltipWidth: tourElWidth
+          });
 
         if (shouldPositionLeft && !shouldPositionAbove && !shouldPositionBelow) {
   				elPos = positions.left({

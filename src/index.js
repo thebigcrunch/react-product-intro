@@ -73,7 +73,7 @@ export default class ReactUserTour extends Component {
 			else {
         const shouldPositionLeft = viewBoxHelpers.shouldPositionLeft(windowWidth, elPosition.left);
         const shouldPositionAbove = viewBoxHelpers.shouldPositionAbove(windowHeight, elPosition.bottom);
-        const shouldPositionBelow = viewBoxHelpers.shouldPositionBelow(elPosition.top);
+        const shouldPositionBelow = viewBoxHelpers.shouldPositionBelow(windowWidth, elPosition.top);
 
         if (shouldPositionLeft && !shouldPositionAbove && !shouldPositionBelow) {
   				elPos = positions.left({
@@ -259,7 +259,7 @@ export default class ReactUserTour extends Component {
 		    position: "absolute",
 		    // left: maskPosition.left,
 		    // top: maskPosition.top,
-        transform: `translate3d(${maskPosition.left}px, ${maskPosition.top}px, 0px)`,
+        transform: `translate3d(${maskPosition.left}px, ${maskPosition.top}px, 0)`,
 		    width: maskPosition.width,
 		    height: maskPosition.height,
 		    boxShadow: "0px 0px 0px 2000px #222326",

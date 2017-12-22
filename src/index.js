@@ -59,6 +59,8 @@ export default class ReactUserTour extends Component {
 
 			let elPos;
 
+      // console.log('overridePos', overridePos)
+
 			if (overridePos && positions[overridePos]) {
 				elPos = positions[overridePos]({
 					position: elPosition,
@@ -71,7 +73,8 @@ export default class ReactUserTour extends Component {
 			}
 			else {
         const shouldPositionLeft = viewBoxHelpers.shouldPositionLeft(windowWidth, elPosition.left);
-        const shouldPositionAbove = viewBoxHelpers.shouldPositionAbove(windowHeight, elPosition.bottom);
+        // Position above on mobile and tablets
+        const shouldPositionAbove = windowWidth < 991 || viewBoxHelpers.shouldPositionAbove(windowHeight, elPosition.bottom);
         const shouldPositionBelow =
           viewBoxHelpers.shouldPositionBelow({
             viewBoxWidth: windowWidth,
@@ -80,6 +83,7 @@ export default class ReactUserTour extends Component {
             tooltipWidth: tourElWidth
           });
 
+        // console.log('left above below', shouldPositionLeft, shouldPositionAbove, shouldPositionBelow)
         if (shouldPositionLeft && !shouldPositionAbove && !shouldPositionBelow) {
   				elPos = positions.left({
   					position: elPosition,

@@ -164,7 +164,7 @@ class Demo extends Component {
                 selector: ".stop-3",
                 title: <div style={tourTitleStyle}>And</div>,
                 body: <div style={tourMessageStyle}>React User Tour will figure out where to position the element.</div>,
-                position: "top"
+                // position: "top"
               },
               {
                 step: 4,

@@ -195,7 +195,7 @@ export default class ReactUserTour extends Component {
     const backButton = (
       this.props.step !== 1 ?
         <TourButton
-          style={{ backgroundColor: "transparent" }}
+          style={this.props.backButtonStyle}
           onClick={() => this.props.onBack(this.props.step - 1)}
           {...extraButtonProps}
           className="react-user-tour-back-button">
@@ -206,6 +206,7 @@ export default class ReactUserTour extends Component {
 		const nextButton = (
 			this.props.step !== this.props.steps.length ?
 				<TourButton
+          style={this.props.nextButtonStyle}
 					onClick={() => this.props.onNext(this.props.step + 1)}
 					{...extraButtonProps}
 					className="react-user-tour-next-button">
@@ -216,6 +217,7 @@ export default class ReactUserTour extends Component {
 		const doneButton = (
 			this.props.step === this.props.steps.length ?
 				<TourButton
+          style={this.props.doneButtonStyle}
 					onClick={this.props.onCancel}
 					{...extraButtonProps}
 					className="react-user-tour-done-button">

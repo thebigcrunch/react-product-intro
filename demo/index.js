@@ -146,9 +146,6 @@ class Demo extends Component {
                 title: <div style={tourTitleStyle}>React User Tour</div>,
                 body: <div style={tourMessageStyle}>Provide a simple guided tour around a website utilizing css selectors.</div>,
                 position: "bottom",
-                before: () => {
-                  console.log("step-before")
-                }
               },
               {
                 step: 2,

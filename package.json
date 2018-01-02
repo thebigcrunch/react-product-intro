@@ -1,6 +1,6 @@
 {
   "name": "react-product-intro",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "web application product intro tour guide for the first time visitors",
   "main": "dist/index.js",
   "browserify": {

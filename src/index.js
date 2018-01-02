@@ -194,7 +194,18 @@ export default class ReactUserTour extends Component {
 			/>
 		);
 
-		const extraButtonProps = this.props.buttonStyle ? {style: this.props.buttonStyle} : {};
+		const extraButtonProps = this.props.buttonStyle ? { style: this.props.buttonStyle } : {};
+
+    const backButton = (
+      this.props.step !== 1 ?
+        <TourButton
+          style={{ backgroundColor: "transparent" }}
+          onClick={() => this.props.onBack(this.props.step - 1)}
+          {...extraButtonProps}
+          className="react-user-tour-back-button">
+            {this.props.backButtonText}
+        </TourButton> : ""
+    );
 
 		const nextButton = (
 			this.props.step !== this.props.steps.length ?
@@ -203,16 +214,6 @@ export default class ReactUserTour extends Component {
 					{...extraButtonProps}
 					className="react-user-tour-next-button">
 						{this.props.nextButtonText}
-				</TourButton> : ""
-		);
-
-		const backButton = (
-			this.props.step !== 1 ?
-				<TourButton
-					onClick={() => this.props.onBack(this.props.step - 1)}
-					{...extraButtonProps}
-					className="react-user-tour-back-button">
-						{this.props.backButtonText}
 				</TourButton> : ""
 		);
 
@@ -235,17 +236,10 @@ export default class ReactUserTour extends Component {
 				</TourButtonContainer> : ""
 		);
 
-		const xStyle = {
-			"float": "right",
-			"cursor": "pointer",
-			"paddingRight": 10,
-			"paddingTop": 10
-		};
-
 		const closeButton = (
 			!this.props.hideClose ?
 				<span className="react-user-tour-close"
-					style={xStyle}
+					style={{ "float": "right", "cursor": "pointer" }}
 					onClick={this.props.onCancel}>
 						{this.props.closeButtonText}
 				</span> : ""
@@ -300,10 +294,11 @@ ReactUserTour.defaultProps = {
 	style: {
 		height: 150,
 		width: 350,
+    padding: "13px 10px 10px 20px",
 		position: "absolute",
 		zIndex: 9999,
-		backgroundColor: "#fff",
-		color: "#494949",
+		backgroundColor: "#FFFFFF",
+		color: "#222326",
 		boxShadow: "0 6px 8px 0 rgba(0, 0, 0, 0.24)"
 	},
 	containerStyle: {},
@@ -317,7 +312,7 @@ ReactUserTour.defaultProps = {
 	buttonContainerStyle: {
 		position: "absolute",
 		bottom: 10,
-		right: 0
+		right: 10
 	},
 	hideButtons: false,
 	hideClose: false,

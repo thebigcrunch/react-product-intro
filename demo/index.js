@@ -17,16 +17,14 @@ class Demo extends Component {
   }
   render() {
     const tourTitleStyle = {
-      fontWeight: 700,
-      fontSize: 16,
-      paddingTop: 10,
       paddingBottom: 10,
-      paddingLeft: 10
+      fontWeight: "bold",
+      fontSize: 16,
+      lineHeight: "24px",
     };
 
     const tourMessageStyle = {
       fontSize: 12,
-      paddingLeft: 10
     };
 
     const wrapperStyle = {

@@ -39,6 +39,15 @@ Optional style object for buttons displayed on component.
 #### `buttonContainerStyle`
 Optional style object for the container div around the buttons.
 
+#### `backButtonStyle`
+Optional style object for the back button.
+
+#### `nextButtonStyle`
+Optional style object for the next button.
+
+#### `doneButtonStyle`
+Optional style object for the done button.
+
 #### `arrow`
 We provide an arrow that points to the selector, but you may optionally pass in your own React element in the place of the arrow provided.
 
@@ -72,46 +81,46 @@ Boolean to disable the showing of the close text in the upper left of the compon
 import React, { Component }from "react";
 import Tour from "react-product-intro";
 export default class UserTour extends Component {
-	constructor() {
-		super();
-		this.state = {
-			isTourActive: false,
-			tourStep: 1
-		};
-	}
-	componentDidMount() {
-		/* set state to active in cDM to make sure nodes being attached to have been mounted */
-		this.setState({
-			isTourActive: true
-		});
-	}
-	render() {
-		return (
-			<div>
-				<Tour
-					active={this.state.isTourActive}
-					step={this.state.tourStep}
-					onNext={(step) => this.setState({tourStep: step})}
-					onBack={(step) => this.setState({tourStep: step})}
-					onCancel={() => this.setState({isTourActive: false})}
-					steps={[
-						{
-							step: 1,
-							selector: ".my-fun-website",
-							title: <div style={{color: "blue"}}>My Web</div>,
-							body: <div style={{color: "green"}}>Site</div>
-						},
-						{
-							step: 2,
-							selector: ".my-website-is-amazing",
-							title: <div style={{color: "blue"}}>Wow</div>,
-							body: <div style={{color: "yellow"}}>so good</div>
-						}
-					]}
-				/>
-			</div>
-		);
-	}
+  constructor() {
+    super();
+    this.state = {
+      isTourActive: false,
+      tourStep: 1
+    };
+  }
+  componentDidMount() {
+    /* set state to active in cDM to make sure nodes being attached to have been mounted */
+    this.setState({
+      isTourActive: true
+    });
+  }
+  render() {
+    return (
+      <div>
+        <Tour
+          active={this.state.isTourActive}
+          step={this.state.tourStep}
+          onNext={(step) => this.setState({tourStep: step})}
+          onBack={(step) => this.setState({tourStep: step})}
+          onCancel={() => this.setState({isTourActive: false})}
+          steps={[
+            {
+              step: 1,
+              selector: ".my-fun-website",
+              title: <div style={{color: "blue"}}>My Web</div>,
+              body: <div style={{color: "green"}}>Site</div>
+            },
+            {
+              step: 2,
+              selector: ".my-website-is-amazing",
+              title: <div style={{color: "blue"}}>Wow</div>,
+              body: <div style={{color: "yellow"}}>so good</div>
+            }
+          ]}
+        />
+      </div>
+    );
+  }
 }
 ```
 
@@ -121,6 +130,6 @@ Copyright (C) 2017 Social Tables, Inc. (https://www.socialtables.com) All rights
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
-	http://www.apache.org/licenses/LICENSE-2.0
+  http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.

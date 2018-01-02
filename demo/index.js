@@ -136,8 +136,9 @@ class Demo extends Component {
           <Tour
             active={this.state.isTourActive}
             step={this.state.tourStep}
-            onNext={(step) => this.setState({tourStep: step})}
+            backButtonStyle={{ backgroundColor: "transparent" }}
             onBack={(step) => this.setState({tourStep: step})}
+            onNext={(step) => this.setState({tourStep: step})}
             onCancel={() => this.setState({isTourActive: false})}
             steps={[
               {

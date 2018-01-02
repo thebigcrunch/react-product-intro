@@ -18,7 +18,7 @@ const TourButton = (props) => {
   }
 
 	return (
-		<div style={style} onClick={props.onClick} class={props.className}>
+		<div style={style} onClick={props.onClick} className={props.className}>
 			{props.children}
 		</div>
 	);

@@ -2,7 +2,7 @@ This is an upgraded version of https://github.com/socialtables/react-user-tour
 
 # React User Tour
 
-A component that allows you to give a user a guided tour around your application. <a href="http://socialtables.github.io/react-user-tour/demo/index.html">Click here for a Demo!</a>
+A component that allows you to give a user a guided tour around your application. <a href="http://socialtables.github.io/react-user-tour/demo/index.html">Outdated Demo!</a>
 
 ### Install
 ` npm install react-product-intro`

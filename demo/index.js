@@ -35,6 +35,10 @@ class Demo extends Component {
       left: 0,
     }
 
+    if (!this.state.isTourActive) {
+      wrapperStyle.display = "none"
+    }
+
     return (
       <div>
         <div
@@ -44,7 +48,7 @@ class Demo extends Component {
           Restart Tour
         </div>
         <div
-          style={{width: 200, height: 100, left: "60%", top: 0, position: "absolute", backgroundColor: "red"}}
+          style={{width: 200, height: "80%", left: "60%", top: "10%", position: "absolute", backgroundColor: "red"}}
           className="stop-1"
         />
         <div
@@ -146,7 +150,7 @@ class Demo extends Component {
                 selector: ".stop-1",
                 title: <div style={tourTitleStyle}>React User Tour</div>,
                 body: <div style={tourMessageStyle}>Provide a simple guided tour around a website utilizing css selectors.</div>,
-                position: "bottom",
+                // position: "bottom",
               },
               {
                 step: 2,

@@ -42,6 +42,7 @@ export default class ReactUserTour extends Component {
 		horizontalOffset = 0,
 		verticalOffset = 0
 	}) {
+    console.log('margin', margin)
 		const windowHeight = window.innerHeight;
 		const windowWidth = window.innerWidth;
 		const el = document.querySelector(selector);
@@ -73,14 +74,26 @@ export default class ReactUserTour extends Component {
 			}
 			else {
         const shouldPositionLeft = viewBoxHelpers.shouldPositionLeft(windowWidth, elPosition.left);
+
         // Position above on mobile and tablets
-        const shouldPositionAbove = windowWidth < 991 || viewBoxHelpers.shouldPositionAbove(windowHeight, elPosition.bottom);
+        const shouldPositionAbove =
+          windowWidth < 991 ||
+          viewBoxHelpers.shouldPositionAbove({
+            viewBoxHeight: windowHeight,
+            top: elPosition.top,
+            bottom: elPosition.bottom,
+            tooltipHeight: tourElHeight,
+          });
+
         const shouldPositionBelow =
           viewBoxHelpers.shouldPositionBelow({
             viewBoxWidth: windowWidth,
+            viewBoxHeight: windowHeight,
             top: elPosition.top,
             right: elPosition.right,
-            tooltipWidth: tourElWidth
+            bottom: elPosition.bottom,
+            tooltipWidth: tourElWidth,
+            tooltipHeight: tourElHeight,
           });
 
         // console.log('left above below', shouldPositionLeft, shouldPositionAbove, shouldPositionBelow)
@@ -176,6 +189,8 @@ export default class ReactUserTour extends Component {
       verticalOffset: currentTourStep.verticalOffset
 		});
 
+    console.log('this.props.style.width', this.props.style.width)
+
 		const arrow = (
 			this.props.arrow
 			?
@@ -266,6 +281,8 @@ export default class ReactUserTour extends Component {
 		    boxShadow: "0px 0px 0px 2000px #222326",
 		    opacity: 0.5,
 		} : {};
+
+    console.log('arrow', arrow)
 
 		return (
 			<div className="react-user-tour-container" style={tourContainerStyle}>

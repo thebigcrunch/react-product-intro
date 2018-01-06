@@ -48,6 +48,9 @@ Optional style object for the next button.
 #### `doneButtonStyle`
 Optional style object for the done button.
 
+#### `tourStepsCounterStyle`
+Optional style object for the steps counter.
+
 #### `arrow`
 We provide an arrow that points to the selector, but you may optionally pass in your own React element in the place of the arrow provided.
 
@@ -72,8 +75,14 @@ Text that will appear on the button that closes the tour. Defaults to `Close`
 #### `hideButtons`
 Boolean to disable the showing of next/back/done buttons. Set this to true if you want to insert your own buttons in the body.
 
+#### `closeButton`
+React element for custom close button.
+
 #### `hideClose`
-Boolean to disable the showing of the close text in the upper left of the component. Set this to true if you want to insert your own close functionality or if you would like to disable the ability for the user to prematurely exit the tour.
+Boolean to disable the showing of the close button in the upper left of the component. Set this to true if you want to insert your own close functionality or if you would like to disable the ability for the user to prematurely exit the tour.
+
+#### `hideSteps`
+Boolean to disable the showing of the steps counter.
 
 ### Use
 

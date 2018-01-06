@@ -236,6 +236,13 @@ export default class ReactUserTour extends Component {
 				</TourButton> : ""
 		);
 
+    const tourStepsCounter = (
+      !this.props.hideSteps ?
+        <div style={{ position: "absolute", left: 20, bottom: 10, ...this.props.tourStepsCounterStyle }}>
+          {`${this.props.step} of ${this.props.steps.length}`}
+        </div> : ""
+    )
+
 		const tourButtonContainer = (
 			!this.props.hideButtons ?
 				<TourButtonContainer style={this.props.buttonContainerStyle}>
@@ -296,6 +303,7 @@ export default class ReactUserTour extends Component {
 							{closeButton}
 							{currentTourStep.title}
 							{currentTourStep.body}
+              {tourStepsCounter}
 							{tourButtonContainer}
 						</div>
 					}

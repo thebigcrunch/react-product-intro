@@ -42,7 +42,6 @@ export default class ReactUserTour extends Component {
 		horizontalOffset = 0,
 		verticalOffset = 0
 	}) {
-    console.log('margin', margin)
 		const windowHeight = window.innerHeight;
 		const windowWidth = window.innerWidth;
 		const el = document.querySelector(selector);
@@ -96,7 +95,6 @@ export default class ReactUserTour extends Component {
             tooltipHeight: tourElHeight,
           });
 
-        // console.log('left above below', shouldPositionLeft, shouldPositionAbove, shouldPositionBelow)
         if (shouldPositionLeft && !shouldPositionAbove && !shouldPositionBelow) {
   				elPos = positions.left({
   					position: elPosition,
@@ -189,8 +187,6 @@ export default class ReactUserTour extends Component {
       verticalOffset: currentTourStep.verticalOffset
 		});
 
-    console.log('this.props.style.width', this.props.style.width)
-
 		const arrow = (
 			this.props.arrow
 			?
@@ -281,8 +277,6 @@ export default class ReactUserTour extends Component {
 		    boxShadow: "0px 0px 0px 2000px #222326",
 		    opacity: 0.5,
 		} : {};
-
-    console.log('arrow', arrow)
 
 		return (
 			<div className="react-user-tour-container" style={tourContainerStyle}>

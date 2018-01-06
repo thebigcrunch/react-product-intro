@@ -140,6 +140,7 @@ class Demo extends Component {
           <Tour
             active={this.state.isTourActive}
             step={this.state.tourStep}
+            closeButton={<img src="tour-close.png" width="11.85" height="11.85" style={{ display: "inline-block", verticalAlign: "middle" }} />}
             backButtonStyle={{ backgroundColor: "transparent" }}
             onBack={(step) => this.setState({tourStep: step})}
             onNext={(step) => this.setState({tourStep: step})}

@@ -247,11 +247,19 @@ export default class ReactUserTour extends Component {
 
 		const closeButton = (
 			!this.props.hideClose ?
-				<span className="react-user-tour-close"
-					style={{ "float": "right", "cursor": "pointer" }}
-					onClick={this.props.onCancel}>
-						{this.props.closeButtonText}
-				</span> : ""
+        this.props.closeButton ?
+          <span className="react-user-tour-close"
+            style={{ float: "right", cursor: "pointer", width: 20, height: 20, textAlign: "center" }}
+            onClick={this.props.onCancel}>
+              {this.props.closeButton}
+          </span>
+        :
+  				<span className="react-user-tour-close"
+  					style={{ float: "right", cursor: "pointer" }}
+  					onClick={this.props.onCancel}>
+  						{this.props.closeButtonText}
+  				</span>
+      : ""
 		);
 
 		const tourContainerStyle = {

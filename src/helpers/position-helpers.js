@@ -27,6 +27,13 @@ const positions = {
 			positioned: "topLeft"
 		};
 	},
+  topRight: ({ position, tourElHeight, arrowSize, margin }) => {
+    return {
+      left: Math.floor((position.left + margin)),
+      top: Math.floor((position.top + window.pageYOffset) - tourElHeight - arrowSize),
+      positioned: "topRight"
+    };
+  },
 	bottom: ({ position, tourElWidth, arrowSize, offsetHeight, margin }) => {
 		return {
 			left: Math.floor(position.left - ( (tourElWidth - position.width) / 2 )),
@@ -40,7 +47,14 @@ const positions = {
 			top: Math.floor((position.top + window.pageYOffset) + offsetHeight + arrowSize),
 			positioned: "bottomLeft"
 		};
-	}
+	},
+  bottomRight: ({ position, arrowSize, offsetHeight, margin }) => {
+    return {
+      left: Math.floor((position.left + margin)),
+      top: Math.floor((position.top + window.pageYOffset) + offsetHeight + arrowSize),
+      positioned: "bottomRight"
+    };
+  }
 }
 
 export default positions;

@@ -72,11 +72,21 @@ export default class ReactUserTour extends Component {
 				});
 			}
 			else {
-        const shouldPositionLeft = viewBoxHelpers.shouldPositionLeft(windowWidth, elPosition.left);
+        const shouldPositionLeft = viewBoxHelpers.shouldPositionLeft({
+          viewBoxWidth: windowWidth,
+          left: elPosition.left,
+          tooltipWidth: tourElWidth,
+        });
+        const shouldPositionRight = viewBoxHelpers.shouldPositionRight({
+          viewBoxWidth: windowWidth,
+          right: elPosition.right,
+          left: elPosition.left,
+          tooltipWidth: tourElWidth,
+        });
 
         // Position above on mobile and tablets
         const shouldPositionAbove =
-          windowWidth < 991 ||
+          // windowWidth < 991 ||
           viewBoxHelpers.shouldPositionAbove({
             viewBoxHeight: windowHeight,
             top: elPosition.top,
@@ -103,6 +113,13 @@ export default class ReactUserTour extends Component {
   					margin
   				});
   			}
+        else if (shouldPositionRight && !shouldPositionAbove && !shouldPositionBelow) {
+          elPos = positions.right({
+            position: elPosition,
+            tourElHeight,
+            margin
+          });
+        }
   			else if (shouldPositionAbove) {
   				elPos = shouldPositionLeft ? positions.topLeft({
   					position: elPosition,
@@ -111,13 +128,20 @@ export default class ReactUserTour extends Component {
   					arrowSize: this.props.arrowSize,
   					margin
   				}) :
-  				positions.top({
-  					position: elPosition,
-            tourElWidth,
-  					tourElHeight,
-  					arrowSize: this.props.arrowSize,
-  					margin
-  				});
+            shouldPositionRight ? positions.topRight({
+              position: elPosition,
+              tourElWidth,
+              tourElHeight,
+              arrowSize: this.props.arrowSize,
+              margin
+            }) :
+    				positions.top({
+    					position: elPosition,
+              tourElWidth,
+    					tourElHeight,
+    					arrowSize: this.props.arrowSize,
+    					margin
+    				});
   			}
   			else if (shouldPositionBelow) {
   				elPos = shouldPositionLeft ? positions.bottomLeft({
@@ -127,20 +151,28 @@ export default class ReactUserTour extends Component {
   					offsetHeight: el.offsetHeight,
   					margin
   				}) :
-  				positions.bottom({
-  					position: elPosition,
-            tourElWidth,
-  					arrowSize: this.props.arrowSize,
-  					offsetHeight: el.offsetHeight,
-  					margin
-  				});
+            shouldPositionRight ? positions.bottomRight({
+              position: elPosition,
+              tourElWidth,
+              arrowSize: this.props.arrowSize,
+              offsetHeight: el.offsetHeight,
+              margin
+            }) :
+    				positions.bottom({
+    					position: elPosition,
+              tourElWidth,
+    					arrowSize: this.props.arrowSize,
+    					offsetHeight: el.offsetHeight,
+    					margin
+    				});
   			}
   			else {
-  				elPos = positions.right({
-  					position: elPosition,
-            tourElHeight,
-  					margin
-  				});
+          alert('else')
+  				// elPos = positions.right({
+  				// 	position: elPosition,
+      //       tourElHeight,
+  				// 	margin
+  				// });
   			}
       }
 
@@ -284,8 +316,6 @@ export default class ReactUserTour extends Component {
 		const maskPosition = this.getMaskPositionAndDimensions({ selector: currentTourStep.selector })
 		const maskStyle = maskPosition ? {
 		    position: "absolute",
-		    // left: maskPosition.left,
-		    // top: maskPosition.top,
         transform: `translate3d(${maskPosition.left}px, ${maskPosition.top}px, 0)`,
 		    width: maskPosition.width,
 		    height: maskPosition.height,

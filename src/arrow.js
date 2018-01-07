@@ -26,6 +26,11 @@ const Arrow = ({position, width, height, size, color}) => {
 			arrowStyle.top = height;
 			arrowStyle.left = width - (size * 2);
 			break;
+    case "topRight":
+      arrowStyle = arrowDown({size, color});
+      arrowStyle.top = height;
+      arrowStyle.left = 0
+      break;
 		case "bottom":
 			arrowStyle = arrowUp({size, color});
       arrowStyle.left = "50%";
@@ -35,6 +40,10 @@ const Arrow = ({position, width, height, size, color}) => {
 			arrowStyle = arrowUp({size, color});
 			arrowStyle.left = width - (size * 2);
 			break;
+    case "bottomRight":
+      arrowStyle = arrowUp({size, color});
+      arrowStyle.left = 0
+      break;
 		default:
 			arrowStyle = {};
 	}

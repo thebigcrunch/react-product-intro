@@ -42,14 +42,13 @@ class Demo extends Component {
     return (
       <div>
         <div
-          style={{width: 200, height: 25, left: 0, top: 0, position: "absolute", backgroundColor: "blanchedalmond", textAlign: "center", paddingTop: 10, fontWeight: 700, cursor: "pointer"}}
+          style={{width: 200, height: 25, lineHeight: "25px", left: 0, top: 0, position: "absolute", backgroundColor: "blanchedalmond", textAlign: "center", fontWeight: 700, cursor: "pointer"}}
           onClick={() => this.setState({ isTourActive: true, tourStep: 1 })}
         >
           Restart Tour
         </div>
         <div
-          style={{width: "90%", height: "90%", left: "5%", top: "5%", position: "absolute", backgroundColor: "red"}}
-          // style={{width: 200, height: 100, left: "60%", top: 0, position: "absolute", backgroundColor: "red"}}
+          style={{width: 200, height: 100, left: "60%", top: 0, position: "absolute", backgroundColor: "red"}}
           className="stop-1"
         />
         <div

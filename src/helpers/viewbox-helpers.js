@@ -1,5 +1,9 @@
-export const isElementBelowViewBox = (viewBoxHeight, top) => viewBoxHeight - top < 0;
-export const isElementAboveViewBox = (bottom) => bottom < 0;
+export const isElementBelowViewBox = (viewBoxHeight, top) => {
+  return viewBoxHeight - top < 0;
+}
+export const isElementAboveViewBox = (bottom) => {
+  return bottom < 0;
+}
 
 export const shouldPositionLeft = ({ viewBoxWidth, left, tooltipWidth }) => {
   return (viewBoxWidth - left) < (viewBoxWidth / 2) && left > tooltipWidth || left > tooltipWidth

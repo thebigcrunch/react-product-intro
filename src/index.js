@@ -49,7 +49,8 @@ export default class ReactUserTour extends Component {
 			let elPosition = el ? el.getBoundingClientRect() : {};
 
 			const isElementBelowViewBox = viewBoxHelpers.isElementBelowViewBox(windowHeight, elPosition.top);
-			const isElementAboveViewBox = viewBoxHelpers.isElementBelowViewBox(elPosition.bottom);
+			const isElementAboveViewBox = viewBoxHelpers.isElementAboveViewBox(elPosition.bottom);
+
 			if (isElementBelowViewBox) {
 				elPosition = scrollToPosition(el, elPosition.bottom);
 			}
@@ -317,7 +318,8 @@ export default class ReactUserTour extends Component {
 		const maskPosition = this.getMaskPositionAndDimensions({ selector: currentTourStep.selector })
 		const maskStyle = maskPosition ? {
 		    position: "absolute",
-        transform: `translate3d(${maskPosition.left}px, ${maskPosition.top}px, 0)`,
+        left: maskPosition.left,
+        top: maskPosition.top + window.pageYOffset,
 		    width: maskPosition.width,
 		    height: maskPosition.height,
 		    boxShadow: "0px 0px 0px 2000px #222326",

@@ -54,6 +54,13 @@ const positions = {
       top: Math.floor((position.top + window.pageYOffset) + offsetHeight + arrowSize),
       positioned: "bottomRight"
     };
+  },
+  ontop: ({ position, tourElWidth, arrowSize, offsetHeight, margin }) => {
+    return {
+      left: Math.floor(position.left + ( (position.width - tourElWidth) / 2 )),
+      top: Math.floor(position.top + margin + window.pageYOffset),
+      positioned: "ontop"
+    }
   }
 }
 

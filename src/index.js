@@ -167,12 +167,13 @@ export default class ReactUserTour extends Component {
     				});
   			}
   			else {
-          alert('else')
-  				// elPos = positions.right({
-  				// 	position: elPosition,
-      //       tourElHeight,
-  				// 	margin
-  				// });
+  				elPos = positions.ontop({
+            position: elPosition,
+            tourElWidth,
+            arrowSize: this.props.arrowSize,
+            offsetHeight: el.offsetHeight,
+            margin
+  				});
   			}
       }
 

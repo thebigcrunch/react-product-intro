@@ -330,7 +330,7 @@ export default class ReactUserTour extends Component {
 			...this.props.containerStyle
 		}
 
-    const tooltipStyle = {...this.props.style};
+    const tooltipStyle = { ...this.props.style, pointerEvents: "none" };
 
 		const maskPosition = this.getMaskPositionAndDimensions({ selector: currentTourStep.selector })
 		const maskStyle = maskPosition ? {

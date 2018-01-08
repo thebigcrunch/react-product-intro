@@ -320,6 +320,7 @@ export default class ReactUserTour extends Component {
 		);
 
 		const tourContainerStyle = {
+      pointerEvents: "none",
 			position: "absolute",
       top: 0,
       right: 0,
@@ -340,7 +341,6 @@ export default class ReactUserTour extends Component {
 		    height: maskPosition.height,
 		    boxShadow: "0px 0px 0px 2000px #222326",
 		    opacity: 0.5,
-        pointerEvents: "none",
 		} : {};
 
 		return (

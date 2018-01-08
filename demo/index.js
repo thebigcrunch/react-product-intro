@@ -172,7 +172,7 @@ class Demo extends Component {
                 selector: ".stop-4",
                 title: <div style={tourTitleStyle}>Wow</div>,
                 body: <div style={tourMessageStyle}>That sounds amazing, can it be true?</div>,
-                // position: "left"
+                position: "left"
               },
               {
                 step: 5,

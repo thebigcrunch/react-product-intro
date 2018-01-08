@@ -16,42 +16,42 @@ const positions = {
 	top: ({ position, tourElWidth, tourElHeight, arrowSize, margin }) => {
 		return {
 			left: Math.floor(position.left - ( (tourElWidth - position.width) / 2 )),
-			top: Math.floor((position.top + window.pageYOffset) - tourElHeight - arrowSize),
+			top: Math.floor((position.top + window.pageYOffset - margin) - tourElHeight - arrowSize),
 			positioned: "top"
 		};
 	},
 	topLeft: ({ position, tourElWidth, tourElHeight, arrowSize, margin }) => {
 		return {
 			left: Math.floor((position.left + margin) - tourElWidth),
-			top: Math.floor((position.top + window.pageYOffset) - tourElHeight - arrowSize),
+			top: Math.floor((position.top + window.pageYOffset - margin) - tourElHeight - arrowSize),
 			positioned: "topLeft"
 		};
 	},
   topRight: ({ position, tourElHeight, arrowSize, margin }) => {
     return {
       left: Math.floor((position.left + margin)),
-      top: Math.floor((position.top + window.pageYOffset) - tourElHeight - arrowSize),
+      top: Math.floor((position.top + window.pageYOffset + margin) - tourElHeight - arrowSize),
       positioned: "topRight"
     };
   },
 	bottom: ({ position, tourElWidth, arrowSize, offsetHeight, margin }) => {
 		return {
 			left: Math.floor(position.left - ( (tourElWidth - position.width) / 2 )),
-			top: Math.floor((position.top + window.pageYOffset) + offsetHeight + arrowSize),
+			top: Math.floor((position.top + window.pageYOffset + margin) + offsetHeight + arrowSize),
 			positioned: "bottom"
 		};
 	},
 	bottomLeft: ({ position, tourElWidth, arrowSize, offsetHeight, margin }) => {
 		return {
 			left: Math.floor((position.left + margin) - tourElWidth),
-			top: Math.floor((position.top + window.pageYOffset) + offsetHeight + arrowSize),
+			top: Math.floor((position.top + window.pageYOffset + margin) + offsetHeight + arrowSize),
 			positioned: "bottomLeft"
 		};
 	},
   bottomRight: ({ position, arrowSize, offsetHeight, margin }) => {
     return {
       left: Math.floor((position.left + margin)),
-      top: Math.floor((position.top + window.pageYOffset) + offsetHeight + arrowSize),
+      top: Math.floor((position.top + window.pageYOffset + margin) + offsetHeight + arrowSize),
       positioned: "bottomRight"
     };
   },

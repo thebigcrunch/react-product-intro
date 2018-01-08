@@ -1,11 +1,15 @@
 import React, { Component } from "react";
-import {Motion, spring} from "react-motion";
+import { Motion, spring } from "react-motion";
+
 import TourButton from "./tour-button";
 import TourButtonContainer from "./tour-button-container";
 import Arrow from "./arrow";
+import Beacon from "./Beacon";
 import positions from "./helpers/position-helpers";
 import * as viewBoxHelpers from "./helpers/viewbox-helpers";
 import scrollToPosition from "./helpers/scroll-to-position";
+
+const defaultMargin = 25
 
 export default class ReactUserTour extends Component {
 
@@ -38,7 +42,7 @@ export default class ReactUserTour extends Component {
 		tourElWidth,
 		tourElHeight,
 		overridePos,
-		margin = 25,
+		margin,
 		horizontalOffset = 0,
 		verticalOffset = 0
 	}) {
@@ -131,7 +135,6 @@ export default class ReactUserTour extends Component {
   				}) :
             shouldPositionRight ? positions.topRight({
               position: elPosition,
-              tourElWidth,
               tourElHeight,
               arrowSize: this.props.arrowSize,
               margin
@@ -216,10 +219,23 @@ export default class ReactUserTour extends Component {
       tourElWidth: this.props.style.width,
       tourElHeight: this.props.style.height,
       overridePos: currentTourStep.position,
-      margin: currentTourStep.margin,
+      margin: currentTourStep.margin || defaultMargin,
       horizontalOffset: currentTourStep.horizontalOffset,
       verticalOffset: currentTourStep.verticalOffset
 		});
+
+    const beacon = !this.props.hideBeacon
+    ?
+    <Beacon
+      style={this.props.beaconStyle}
+      position={stepPosition.positioned}
+      width={this.props.style.width}
+      height={this.props.style.height}
+      margin={currentTourStep.margin || defaultMargin}
+      size={10}
+      arrowSize={this.props.arrowSize}
+    />
+    : null
 
 		const arrow = (
 			this.props.arrow
@@ -332,6 +348,7 @@ export default class ReactUserTour extends Component {
 					{({x, y}) =>
 
 						<div style={{...tooltipStyle, transform: `translate3d(${x}px, ${y}px, 0)`}}>
+              {beacon}
 							{arrow}
 							{closeButton}
 							{currentTourStep.title}

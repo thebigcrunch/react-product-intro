@@ -29,8 +29,8 @@ const positions = {
 	},
   topRight: ({ position, tourElHeight, arrowSize, margin }) => {
     return {
-      left: Math.floor((position.left + margin)),
-      top: Math.floor((position.top + window.pageYOffset + margin) - tourElHeight - arrowSize),
+      left: Math.floor((position.right - (arrowSize * 2) )),
+      top: Math.floor((position.top + window.pageYOffset - margin) - tourElHeight - arrowSize),
       positioned: "topRight"
     };
   },

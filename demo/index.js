@@ -151,21 +151,21 @@ class Demo extends Component {
                 selector: ".stop-1",
                 title: <div style={tourTitleStyle}>React User Tour</div>,
                 body: <div style={tourMessageStyle}>Provide a simple guided tour around a website utilizing css selectors.</div>,
-                // position: "bottom",
+                position: "bottom",
               },
               {
                 step: 2,
                 selector: ".stop-2",
                 title: <div style={tourTitleStyle}>Simply</div>,
                 body: <div style={tourMessageStyle}>pass in a class class prefixe with `.` or id prefixed with `#`</div>,
-                // position: "right"
+                // position: "topRight"
               },
               {
                 step: 3,
                 selector: ".stop-3",
                 title: <div style={tourTitleStyle}>And</div>,
                 body: <div style={tourMessageStyle}>React User Tour will figure out where to position the element.</div>,
-                // position: "top"
+                // position: "topRight"
               },
               {
                 step: 4,

@@ -51,6 +51,9 @@ Optional style object for the done button.
 #### `tourStepsCounterStyle`
 Optional style object for the steps counter.
 
+#### `beaconStyle`
+Optional style object for the beacon.
+
 #### `arrow`
 We provide an arrow that points to the selector, but you may optionally pass in your own React element in the place of the arrow provided.
 
@@ -83,6 +86,9 @@ Boolean to disable the showing of the close button in the upper left of the comp
 
 #### `hideSteps`
 Boolean to disable the showing of the steps counter.
+
+#### `hideBeacon`
+Boolean to disable the showing of the beacon.
 
 ### Use
 

@@ -340,7 +340,7 @@ export default class ReactUserTour extends Component {
 		    height: maskPosition.height,
 		    boxShadow: "0px 0px 0px 2000px #222326",
 		    opacity: 0.5,
-        pointerEvents: none,
+        pointerEvents: "none",
 		} : {};
 
 		return (

@@ -1,3 +1,5 @@
+const windowWidth = window.innerWidth;
+
 const positions = {
 	right: ({ position, tourElHeight, margin }) => {
 		return {
@@ -14,11 +16,15 @@ const positions = {
 		};
 	},
 	top: ({ position, tourElWidth, tourElHeight, arrowSize, margin }) => {
-		return {
+    const pos = {
 			left: Math.floor(position.left - ( (tourElWidth - position.width) / 2 )),
 			top: Math.floor((position.top + window.pageYOffset - margin) - tourElHeight - arrowSize),
 			positioned: "top"
 		};
+    if (pos.left + tourElWidth > windowWidth) {
+      pos.left = (windowWidth - tourElWidth) / 2
+    }
+    return pos
 	},
 	topLeft: ({ position, tourElWidth, tourElHeight, arrowSize, margin }) => {
 		return {

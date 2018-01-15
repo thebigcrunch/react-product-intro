@@ -46,6 +46,7 @@ export default ({ style = {}, position, width, height, margin, size, arrowSize }
       style.left = arrowSize - (size / 2);
       break;
     default:
+      style.display = "none"
       break;
   }
 

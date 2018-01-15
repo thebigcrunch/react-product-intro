@@ -13,16 +13,19 @@ export default ({ style = {}, position, width, height, margin, size, arrowSize }
       style.left = width + (size * 2);;
       style.top = "50%";
       style.transform = "translateY(-50%)";
+      style.WebkitTransform = "translateY(-50%)";
       break;
     case "right":
       style.top = "50%";
       style.transform = "translateY(-50%)";
+      style.WebkitTransform = "translateY(-50%)";
       style.left = 0 - margin - (size / 2)
       break;
     case "top":
       style.top = height + margin + size;
       style.left = "50%";
       style.transform = "translateX(-50%)";
+      style.WebkitTransform = "translateX(-50%)";
       break;
     case "topLeft":
       style.top = height + margin + size;
@@ -36,6 +39,7 @@ export default ({ style = {}, position, width, height, margin, size, arrowSize }
       style.top = 0 - margin - arrowSize - (size / 2);
       style.left = "50%";
       style.transform = "translateX(-50%)";
+      style.WebkitTransform = "translateX(-50%)";
       break;
     case "bottomLeft":
       style.top = 0 - margin - arrowSize - (size / 2);

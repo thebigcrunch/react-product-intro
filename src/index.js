@@ -355,7 +355,7 @@ export default class ReactUserTour extends Component {
 				<Motion style={{x: spring(stepPosition.left), y: spring(stepPosition.top)}}>
 					{({x, y}) =>
 
-						<div style={{...tooltipStyle, transform: `translate3d(${x}px, ${y}px, 0)`}}>
+						<div style={{...tooltipStyle, transform: `translate3d(${x}px, ${y}px, 0)`, WebkitTransform: `translate3d(${x}px, ${y}px, 0)`}}>
               {beacon}
 							{arrow}
 							{closeButton}

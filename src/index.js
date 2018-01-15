@@ -373,8 +373,8 @@ export default class ReactUserTour extends Component {
 }
 
 ReactUserTour.defaultProps = {
-  width: 150,
-  height: 350,
+  width: 350,
+  height: 150,
 	style: {
     padding: "13px 10px 10px 20px",
 		position: "absolute",

@@ -10,6 +10,7 @@ import * as viewBoxHelpers from "./helpers/viewbox-helpers";
 import scrollToPosition from "./helpers/scroll-to-position";
 
 const defaultMargin = 25
+const defaultPadding = 15
 
 export default class ReactUserTour extends Component {
 	constructor(props) {
@@ -23,8 +24,8 @@ export default class ReactUserTour extends Component {
     this.width = this.props.width
     this.height = this.props.height
 
-    if (this.width > window.innerWidth) {
-      this.width = window.innerWidth - (15*20) // Set padding on smaller screens
+    if (this.width > window.innerWidth || window.innerWidth - this.width < 2*defaultPadding) {
+      this.width = window.innerWidth - (defaultPadding*2) // Set padding on smaller screens
     }
 	}
 

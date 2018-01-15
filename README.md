@@ -27,6 +27,12 @@ function that fires when user clicks the X button or the Done Button.
 #### `steps`
 An array of steps. Each step object takes: step (integer), selector (CSS selector to be passed to `document.querySelector()`), title (a react element representing the header of the current step), and body (a react element representing the main body message of the tour step). Each step can also take an optional argument, `position` which will override the position of the tour component in relation to the selector that is determined by the application. Valid arguments for the position step are `left` , `right`, `top`, `topLeft`, `topRight`, `bottom`, `bottomLeft` and `bottomRight`. Optional properties `horizontalOffset` and `verticalOffset` values allow to move tooltip around pointed element. You can control distance from the edge of pointed element by `margin` property (`25` by default). It's not taken into account in case of `top` and `bottom` overrides.
 
+#### `width`
+Optional width.
+
+#### `height`
+Optional height.
+
 #### `style`
 Optional style object.
 

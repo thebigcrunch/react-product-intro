@@ -12,7 +12,6 @@ import scrollToPosition from "./helpers/scroll-to-position";
 const defaultMargin = 25
 
 export default class ReactUserTour extends Component {
-
 	constructor(props) {
 		super(props);
 		this.prevPos = {
@@ -20,6 +19,13 @@ export default class ReactUserTour extends Component {
 			left: 0
 		};
 		this.getStepPosition = this.getStepPosition.bind(this);
+
+    this.width = this.props.width
+    this.height = this.props.height
+
+    if (this.width > window.innerWidth) {
+      this.width = window.innerWidth - (15*20) // Set padding on smaller screens
+    }
 	}
 
 	shouldComponentUpdate(nextProps) {
@@ -198,8 +204,8 @@ export default class ReactUserTour extends Component {
 				?
 				this.props.arrow({
 					position: position.positioned,
-					width: this.props.style.width,
-					height: this.props.style.height,
+					width: this.width,
+					height: this.height,
 					size: this.props.arrowSize,
 					color: this.props.arrowColor
 				})
@@ -216,8 +222,8 @@ export default class ReactUserTour extends Component {
 
 		const stepPosition = this.getStepPosition({
       selector: currentTourStep.selector,
-      tourElWidth: this.props.style.width,
-      tourElHeight: this.props.style.height,
+      tourElWidth: this.width,
+      tourElHeight: this.height,
       overridePos: currentTourStep.position,
       margin: currentTourStep.margin || defaultMargin,
       horizontalOffset: currentTourStep.horizontalOffset,
@@ -229,8 +235,8 @@ export default class ReactUserTour extends Component {
     <Beacon
       style={this.props.beaconStyle}
       position={stepPosition.positioned}
-      width={this.props.style.width}
-      height={this.props.style.height}
+      width={this.width}
+      height={this.height}
       margin={currentTourStep.margin || defaultMargin}
       size={10}
       arrowSize={this.props.arrowSize}
@@ -244,8 +250,8 @@ export default class ReactUserTour extends Component {
 			:
 			<Arrow
 				position={stepPosition.positioned}
-				width={this.props.style.width}
-				height={this.props.style.height}
+				width={this.width}
+				height={this.height}
 				size={this.props.arrowSize}
 				color={this.props.arrowColor}
 			/>
@@ -330,7 +336,7 @@ export default class ReactUserTour extends Component {
 			...this.props.containerStyle
 		}
 
-    const tooltipStyle = { ...this.props.style, pointerEvents: "auto" };
+    const tooltipStyle = { ...this.props.style, width: this.width, height: this.height, pointerEvents: "auto" };
 
 		const maskPosition = this.getMaskPositionAndDimensions({ selector: currentTourStep.selector })
 		const maskStyle = maskPosition ? {
@@ -367,9 +373,9 @@ export default class ReactUserTour extends Component {
 }
 
 ReactUserTour.defaultProps = {
+  width: 150,
+  height: 350,
 	style: {
-		height: 150,
-		width: 350,
     padding: "13px 10px 10px 20px",
 		position: "absolute",
 		zIndex: 9999,

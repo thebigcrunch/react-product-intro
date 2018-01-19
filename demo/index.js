@@ -159,6 +159,9 @@ class Demo extends Component {
                 title: <div style={tourTitleStyle}>Simply</div>,
                 body: <div style={tourMessageStyle}>pass in a class class prefixe with `.` or id prefixed with `#`</div>,
                 // position: "topRight"
+                before() {
+                  document.querySelector(".stop-2").style.left = "200px"
+                }
               },
               {
                 step: 3,

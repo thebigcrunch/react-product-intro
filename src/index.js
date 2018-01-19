@@ -221,6 +221,10 @@ export default class ReactUserTour extends Component {
 			return null;
 		}
 
+    if (currentTourStep.before && typeof currentTourStep.before === "function" ) {
+      currentTourStep.before();
+    }
+
 		const stepPosition = this.getStepPosition({
       selector: currentTourStep.selector,
       tourElWidth: this.width,

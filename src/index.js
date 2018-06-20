@@ -225,10 +225,13 @@ export default class ReactUserTour extends Component {
       currentTourStep.before();
     }
 
+		const width = currentTourStep.width || this.width;
+		const height = currentTourStep.height || this.height;
+
 		const stepPosition = this.getStepPosition({
       selector: currentTourStep.selector,
-      tourElWidth: this.width,
-      tourElHeight: this.height,
+      tourElWidth: width,
+      tourElHeight: height,
       overridePos: currentTourStep.position,
       margin: currentTourStep.margin || defaultMargin,
       horizontalOffset: currentTourStep.horizontalOffset,
@@ -240,8 +243,8 @@ export default class ReactUserTour extends Component {
     <Beacon
       style={this.props.beaconStyle}
       position={stepPosition.positioned}
-      width={this.width}
-      height={this.height}
+      width={width}
+      height={height}
       margin={currentTourStep.margin || defaultMargin}
       size={10}
       arrowSize={this.props.arrowSize}
@@ -255,8 +258,8 @@ export default class ReactUserTour extends Component {
 			:
 			<Arrow
 				position={stepPosition.positioned}
-				width={this.width}
-				height={this.height}
+				width={width}
+				height={height}
 				size={this.props.arrowSize}
 				color={this.props.arrowColor}
 			/>
@@ -341,7 +344,7 @@ export default class ReactUserTour extends Component {
 			...this.props.containerStyle
 		}
 
-    const tooltipStyle = { ...this.props.style, width: this.width, height: this.height, pointerEvents: "auto" };
+    const tooltipStyle = { ...this.props.style, width: width, height: height, pointerEvents: "auto" };
 
 		const maskPosition = this.getMaskPositionAndDimensions({ selector: currentTourStep.selector })
 		const maskStyle = maskPosition ? {

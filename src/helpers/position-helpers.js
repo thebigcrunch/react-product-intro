@@ -74,8 +74,8 @@ const positions = {
     },
     center: ({ tourElWidth, tourElHeight }) => {
         return {
-            left: (window.innerWidth - tourElWidth) / 2,
-            top: (window.innerHeight - tourElHeight) / 2
+            left: (window.innerWidth / 2) - (tourElWidth / 2),
+            top: (window.innerHeight / 2) - (tourElHeight / 2)
         };
     }
 };

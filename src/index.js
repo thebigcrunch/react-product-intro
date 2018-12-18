@@ -196,11 +196,7 @@ export default class ReactUserTour extends Component {
             this.prevPos = elPos;
             return elPos;
         } else {
-            // Center
-            return {
-                left: window.innerWidth / 2 - tourElWidth,
-                top: window.innerHeight / 2 - tourElHeight
-            };
+            return positions.center({tourElHeight, tourElWidth});
         }
     }
 
@@ -396,10 +392,18 @@ export default class ReactUserTour extends Component {
                   top: maskPosition.top + window.pageYOffset,
                   width: maskPosition.width,
                   height: maskPosition.height,
-                  boxShadow: '0px 0px 0px 2000px #222326',
+                  boxShadow: '0px 0px 0px 4000px #222326',
                   opacity: 0.5
               }
-            : {};
+            : {
+                position: 'absolute',
+                left: 0,
+                top: 0,
+                width: 0,
+                height: 0,
+                boxShadow: '0px 0px 0px 4000px #222326',
+                opacity: 0.5
+            };
 
         return (
             <div className="react-user-tour-container" style={tourContainerStyle}>
